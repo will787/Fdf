@@ -1,5 +1,5 @@
-#define FDF_H
 #ifndef FDF_H
+#define FDF_H
 
 #include <stdio.h>
 #include <math.h>
@@ -9,5 +9,7 @@ typedef struct paramaters{
 	int y;
 	int z;
 } t_paramaters;
+
+int main(void);
 
 #endif 
