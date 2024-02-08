@@ -91,20 +91,20 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE_DIR)
 
 # .*-*..*-*. RULES DEFAULT .*-*..*-*.
 all: $(NAME)
-	@printf "\n$(GREEN)Arquivo Útil:$(PURPLE)$(PURPLE) $(NAME)$(PURPLE)\n"
+	@printf "\n$(GREEN)Arquivo Útil:$(BLUE)$(BLUE) $(NAME)$(BLUE)\n"
 
 # .*-*..*-*. RULES COMPILATION EACH MODELS .*-*..*-*.
 $(OBJ_DIR)/ft_printf/%.o: ft_printf/%.c | $(OBJ_DIR)/ft_printf
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(YELLOW)Compilando:$(PURPLE) $< [$(GREEN)OK$(PURPLE)]\n"
+	@printf "$(YELLOW)Compilando:$(BLUE) $< [$(GREEN)OK$(BLUE)]\n"
 
 $(OBJ_DIR)/get_next_line/%.o: get_next_line/%.c | $(OBJ_DIR)/get_next_line
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(YELLOW)Compilando:$(PURPLE) $< [$(GREEN)OK$(PURPLE)]\n"
+	@printf "$(YELLOW)Compilando:$(BLUE) $< [$(GREEN)OK$(BLUE)]\n"
 
 $(OBJ_DIR)/libft/%.o: libft/%.c | $(OBJ_DIR)/libft
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(YELLOW)Compilando:$(PURPLE) $< [$(GREEN)OK$(PURPLE)]\n"
+	@printf "$(YELLOW)Compilando:$(BLUE) $< [$(GREEN)OK$(BLUE)]\n"
 
 # .*-*..*-*. CREATIONS DIRECTIONS OBJECTS FOR EACH MODELS .*-*..*-*.
 $(OBJ_DIR)/ft_printf:

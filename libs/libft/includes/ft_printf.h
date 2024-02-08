@@ -6,7 +6,7 @@
 /*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:15:36 by wivieira          #+#    #+#             */
-/*   Updated: 2023/12/18 12:59:49 by wivieira         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:06:29 by wivieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@ int		ft_puthex_def(const char value, unsigned int n);
 int		ft_putpointer(const char value, long long n);
 int		ft_puthex_pointer(const char value, unsigned long long n);
 
-
 /*functions puts for printf*/
 
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
-
-
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
 #endif
