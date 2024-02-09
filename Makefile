@@ -1,46 +1,30 @@
-# >-+-+ directories dirs. -+-+<
-NAME = fdf
-SRC_DIR = ./src
-LIBFT_DIR = ./libs/libft
-LIBMLXDIR = ./libs/MLX42
+NAME	:= Game
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+LIBMLX	:= ./libs/MLX42
 
-# >-+-+ includes dirs. -+-+<
+HEADERS	:= -I ./include -I $(LIBMLX)/include
+LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+SRCS	:= $(shell find ./src -iname "*.c")
+OBJS	:= ${SRCS:.c=.o}
 
-INCLUDES = -I ./includes \
-			-I ./libs/libft/includes \
-			-I ./libs/MLX42/include/MLX42
+all: libmlx $(NAME)
 
-# >-+-+ compiler and flags -+-+<
-CC = gcc
-CFLAGS = -Wall -Wextra  -Werror
-AR = ar rcs
-RM = rm -rf
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-LIBFT = $(LIBFT_DIR)/libft.a \
-		$(LIBMLXDIR)/build/libmlx42.a 
+%.o: %.c
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-# >-+-+ srcs fdf -+-+<
-SRC		= $(SRC_DIR)/fdf.c \
-
-OBJ = $(SRC:.c=.o)
-
-all: $(NAME) 
-
-$(NAME): $(LIBFT) $(OBJ)
-			cp 	$(LIBFT) $(NAME)
-	 		$(AR) $(NAME) $(LIBFT) $(OBJ)
-
-$(LIBFT):
-		make -C $(LIBFT_DIR)
+$(NAME): $(OBJS)
+	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
-		make -C $(LIBFT_DIR) fclean
-		$(RM) $(OBJ)
+	@rm -rf $(OBJS)
+	@rm -rf $(LIBMLX)/build
 
 fclean: clean
-		make -C $(LIBFT_DIR) fclean
-		$(RM) $(OBJ)
+	@rm -rf $(NAME)
 
-re: fclean all
+re: clean all
 
-.PHONY: all clean fclean re
+.PHONY: all, clean, fclean, re, libmlx
