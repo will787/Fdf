@@ -14,8 +14,6 @@
 # define FDF_H
 
 #include "../libs/libft/includes/libft.h"
-#include "../libs/libft/includes/ft_printf.h"
-
 # include <stdio.h>
 # include <math.h>
 

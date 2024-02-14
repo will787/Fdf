@@ -100,5 +100,21 @@ t_list	*ft_lstlastg(t_list *list);
 	functions printf in libft-extra
 */
 
+# include <stdarg.h>
+
+int		ft_printf(const char *value, ...);
+int		ft_select_params(const char value, va_list args);
+int		ft_putnbr(int n);
+char	*ft_utoa(unsigned int n);
+int		ft_uputnbr(unsigned int n);
+int		ft_puthex_def(const char value, unsigned int n);
+int		ft_putpointer(const char value, long long n);
+int		ft_puthex_pointer(const char value, unsigned long long n);
+
+/*functions puts for printf*/
+
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+
 
 #endif
