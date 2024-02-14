@@ -13,6 +13,9 @@
 #ifndef FDF_H
 # define FDF_H
 
+#include "../libs/libft/includes/libft.h"
+#include "../libs/libft/includes/ft_printf.h"
+
 # include <stdio.h>
 # include <math.h>
 
@@ -22,4 +25,5 @@ typedef struct paramaters{
 	int	z;
 }	t_paramaters;
 
+int32_t main(void);
 #endif 

@@ -74,7 +74,7 @@ void ft_hook(void* param)
 int32_t main(void)
 {
 	mlx_t* mlx;
-
+	ft_printf("oi");
 	// Gotta error check this stuff
 	if (!(mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
 	{

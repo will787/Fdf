@@ -76,7 +76,7 @@ LIBFT_SRCS := 	ft_atoi.c \
 # .*-*..*-*. LIST OBJECT GENERATED FOR EACH MODULES .*-*..*-*.
 
 FT_PRINTF_OBJS = $(patsubst %.c, $(OBJ_DIR)/ft_printf/%.o, $(notdir $(FT_PRINTF_SRCS)))
-GET_NEXT_LINE_OBJS = $(patsubst %.c, $(OBJ_DIR)/get_next_line/%.o, $(notdir $(GET_NEXT_LINE_SRCS)))
+##GET_NEXT_LINE_OBJS = $(patsubst %.c, $(OBJ_DIR)/get_next_line/%.o, $(notdir $(GET_NEXT_LINE_SRCS)))
 LIBFT_OBJS = $(patsubst %.c, $(OBJ_DIR)/libft/%.o, $(notdir $(LIBFT_SRCS)))
 
 # .*-*..*-*. LIB NAME .*-*..*-*.
