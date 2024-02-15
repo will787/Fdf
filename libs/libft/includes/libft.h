@@ -69,48 +69,4 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-
-/*
-	functions gnl - in libft-extra 
-*/
-
-# include <fcntl.h> 
-# include <stdlib.h>
-# include <unistd.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
-# endif
-
-char	*get_next_line(int fd);
-char	*outside_line(t_list *list);
-void	ft_createnode(t_list **list, int fd);
-void	ft_add(t_list **list, char *buffer);
-void	copy_line(t_list *list, char *str);
-void	finallylist(t_list **list);
-void	free_list(t_list *list);
-int		new_line(t_list *list);
-int		countnewline(t_list *list);
-t_list	*ft_lstlastg(t_list *list);
-
-/*
-	functions printf in libft-extra
-*/
-
-# include <stdarg.h>
-
-int		ft_printf(const char *value, ...);
-int		ft_select_params(const char value, va_list args);
-int		ft_putnbr(int n);
-char	*ft_utoa(unsigned int n);
-int		ft_uputnbr(unsigned int n);
-int		ft_puthex_def(const char value, unsigned int n);
-int		ft_putpointer(const char value, long long n);
-int		ft_puthex_pointer(const char value, unsigned long long n);
-
-/*functions puts for printf*/
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
-
 #endif

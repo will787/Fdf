@@ -14,6 +14,8 @@
 # define FDF_H
 
 #include "../libs/libft/includes/libft.h"
+#include "../libs/libft/includes/get_next_line_bonus.h"
+#include "../libs/libft/includes/ft_printf.h"
 #include "../libs/MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <math.h>
@@ -35,8 +37,8 @@ typedef struct pointers_views{
 	double	z;
 }	t_pointers;
 
-int main(int argc, char* argv[]);
+int32_t main(int argc, char* argv[]);
 int parse_and_validate(char *map);
-void read_map(char *route_map);
+int read_map(char *route_map);
 //int32_t main(void);
 #endif 

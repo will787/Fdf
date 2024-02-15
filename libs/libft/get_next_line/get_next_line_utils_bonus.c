@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line_bonus.h"
 
-int	new_line(t_list *list)
+int	new_line(g_list *list)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	new_line(t_list *list)
 	return (0);
 }
 
-t_list	*ft_lstlastg(t_list *list)
+g_list	*ft_lstlastg(g_list *list)
 {
 	if (!list)
 		return (NULL);
@@ -43,7 +43,7 @@ t_list	*ft_lstlastg(t_list *list)
 	return (list);
 }
 
-int	countnewline(t_list *list)
+int	countnewline(g_list *list)
 {
 	int	i;
 	int	count;
@@ -67,7 +67,7 @@ int	countnewline(t_list *list)
 	return (count);
 }
 
-void	copy_line(t_list *list, char *str)
+void	copy_line(g_list *list, char *str)
 {
 	int	i;
 	int	k;
@@ -91,10 +91,10 @@ void	copy_line(t_list *list, char *str)
 	str[k] = '\0';
 }
 
-void	free_list(t_list *list)
+void	free_list(g_list *list)
 {
-	t_list	*current;
-	t_list	*next;
+	g_list	*current;
+	g_list	*next;
 
 	if (!list)
 		return ;

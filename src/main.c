@@ -42,12 +42,15 @@ void ft_hook(void *param)
 		image->instances[0].x += 50;
 }
 
-int main(int argc, char *argv[])
+int32_t main(int argc, char *argv[])
 {  
 
    if(argc != 2 || !argv)
         return (printf("Passe o mapa\n"));
-    parse_and_validate(argv[1]);
+    if(parse_and_validate(argv[1]) == -1)
+        return(printf("mapa inválido\n"));
+
+    printf("%s\n", argv[1]);
     return(printf("acabou\n"));
 }
 
@@ -55,7 +58,8 @@ int parse_and_validate(char *map)
 {
     mlx_t* mlx;
 
-    read_map(map);
+    if((read_map(map) == -1))
+        return -1;
     printf("%s\n", map);
     if(!(mlx = mlx_init(WIDTH, HEIGHT, "fdf", true)))
     {
@@ -79,22 +83,4 @@ int parse_and_validate(char *map)
     mlx_loop(mlx);
     mlx_terminate(mlx);
     return(1);
-}
-
-void read_map(char *route_map)
-{
-    int fd;
-    char *line;
-    
-    fd = open(route_map, O_RDWR);
-    if(fd < 0){
-        ft_printf("Erro ao abrir o arquivo");
-        return ;
-    }
-    while(!(line = get_next_line(fd))){
-        ft_printf("%s", line);
-        free(line);
-    }
-    close(fd);
-    return ;
 }

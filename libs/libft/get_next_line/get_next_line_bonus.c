@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line_bonus.h"
 
-void	finallylist(t_list **list)
+void	finallylist(g_list **list)
 {
-	t_list	*last_node;
-	t_list	*newbufferbreakln;
+	g_list	*last_node;
+	g_list	*newbufferbreakln;
 	int		i;
 	int		j;
 	char	*buffer;
 
 	buffer = malloc(BUFFER_SIZE + 1);
-	newbufferbreakln = malloc(sizeof(t_list));
+	newbufferbreakln = malloc(sizeof(g_list));
 	if (!buffer || !newbufferbreakln)
 		return ;
 	last_node = ft_lstlastg(*list);
@@ -38,7 +38,7 @@ void	finallylist(t_list **list)
 	*list = newbufferbreakln;
 }
 
-char	*outside_line(t_list *list)
+char	*outside_line(g_list *list)
 {
 	int		lenline;
 	char	*str;
@@ -53,13 +53,13 @@ char	*outside_line(t_list *list)
 	return (str);
 }
 
-void	ft_add(t_list **list, char *buffer)
+void	ft_add(g_list **list, char *buffer)
 {
-	t_list	*new_node;
-	t_list	*last_node;
+	g_list	*new_node;
+	g_list	*last_node;
 
 	last_node = ft_lstlastg(*list);
-	new_node = malloc(sizeof(t_list));
+	new_node = malloc(sizeof(g_list));
 	if (!new_node)
 		return ;
 	if (!last_node)
@@ -74,7 +74,7 @@ void	ft_add(t_list **list, char *buffer)
 	new_node->next = NULL;
 }
 
-void	ft_createnode(t_list **list, int fd)
+void	ft_createnode(g_list **list, int fd)
 {
 	int		char_read;
 	char	*buffer;
@@ -98,7 +98,7 @@ void	ft_createnode(t_list **list, int fd)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*list[1024];	
+	static g_list	*list[1024];	
 	char			*line_actual;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
