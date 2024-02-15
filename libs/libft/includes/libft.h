@@ -94,8 +94,6 @@ int		new_line(t_list *list);
 int		countnewline(t_list *list);
 t_list	*ft_lstlastg(t_list *list);
 
-
-
 /*
 	functions printf in libft-extra
 */
@@ -112,9 +110,7 @@ int		ft_putpointer(const char value, long long n);
 int		ft_puthex_pointer(const char value, unsigned long long n);
 
 /*functions puts for printf*/
-
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
-
 
 #endif
