@@ -4,14 +4,17 @@ int read_map(char *route_map)
 {
     int fd;
     char *line;
+    char *rout;
 
-    fd = open(route_map, O_RDWR);
+    rout = route_map;
+    fd = open(rout, O_RDWR);
     if(fd < 0){
         ft_printf("Erro ao abrir o arquivo\n");
         return -1;
     }
     printf("\n\nEsse é o valor do fd: %i\n", fd);
-    while(!(line = get_next_line(fd))){
+    while((line = get_next_line(fd)) != NULL)
+    {
         ft_printf("%s", line);
         free(line);
     }

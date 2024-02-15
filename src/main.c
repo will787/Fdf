@@ -46,7 +46,7 @@ int32_t main(int argc, char *argv[])
 {  
 
    if(argc != 2 || !argv)
-        return (printf("Passe o mapa\n"));
+        return (printf("Passe o caminho do mapa\n"));
     if(parse_and_validate(argv[1]) == -1)
         return(printf("mapa inválido\n"));
 
