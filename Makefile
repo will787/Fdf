@@ -21,18 +21,29 @@ SRCS := $(shell find ./src -iname "*.c")
 OBJS := ${SRCS:.c=.o}
 
 # Variável de controle para verificar se o Makefile já foi executado
+FIRST_MAKE := .first_make
+
+# Verifica se é a primeira execução do Makefile
+FIRST_MAKE := .first_make
+
+# Verifica se é a primeira execução do Makefile
+ifneq ($(shell test -e $(FIRST_MAKE) && echo yes),yes)
 FIRST_MAKE_EXECUTED := false
+else
+FIRST_MAKE_EXECUTED := true
+endif
+
 
 all: libmlx libft $(NAME)
 ifeq ($(FIRST_MAKE_EXECUTED),false)
 	@printf "$(GREEN)All files compiled successfully\n"
 	@printf "Compiled with: $(BLUE)./$(NAME)\n"
 	@printf "Instructions: $(WHITE)Run $(YELLOW)'./$(NAME)' $(WHITE)with map path\n"
-	@printf "Thank you for using $(NAME) 👽\n"
+	@printf "Thank you for using $(PURPLE)$(NAME) $(WHITE)project \n"
 endif
 
 # Marca a execução do Makefile
-	@$(eval FIRST_MAKE_EXECUTED=true)
+	@touch $(FIRST_MAKE)
 
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build > /dev/null 2>&1 && make -C $(LIBMLX)/build -j4 > /dev/null 2>&1
@@ -54,6 +65,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean > /dev/null 2>&1
+	@rm -f $(FIRST_MAKE) # Remove o arquivo de marcação
 
 re: fclean all
 
