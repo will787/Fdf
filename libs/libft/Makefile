@@ -96,16 +96,12 @@ all: $(NAME)
 # .*-*..*-*. RULES COMPILATION EACH MODELS .*-*..*-*.
 $(OBJ_DIR)/ft_printf/%.o: ft_printf/%.c | $(OBJ_DIR)/ft_printf
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(YELLOW)Compilando:$(PURPLE) $< [$(GREEN)OK$(PURPLE)]\n"
 
 $(OBJ_DIR)/get_next_line/%.o: get_next_line/%.c | $(OBJ_DIR)/get_next_line
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(YELLOW)Compilando:$(PURPLE) $< [$(GREEN)OK$(PURPLE)]\n"
 
 $(OBJ_DIR)/libft/%.o: libft/%.c | $(OBJ_DIR)/libft
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(YELLOW)Compilando:$(PURPLE) $< [$(GREEN)OK$(PURPLE)]\n"
-
 # .*-*..*-*. CREATIONS DIRECTIONS OBJECTS FOR EACH MODELS .*-*..*-*.
 $(OBJ_DIR)/ft_printf:
 	mkdir -p $@
@@ -122,7 +118,7 @@ $(NAME): $(FT_PRINTF_OBJS) $(GET_NEXT_LINE_OBJS) $(LIBFT_OBJS)
 
 # .*-*..*-*. CLEAN OBJECTS .*-*..*-*.
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJ_DIR)	
 
 fclean: clean
 	rm -f $(NAME)

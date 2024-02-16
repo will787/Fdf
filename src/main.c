@@ -33,13 +33,13 @@ void ft_hook(void *param)
     if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 50;
+		image->instances[0].y -= 5;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 50;
+		image->instances[0].y += 5;
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 50;
+		image->instances[0].x -= 5;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 50;
+		image->instances[0].x += 5;
 }
 
 int32_t main(int argc, char *argv[])
@@ -66,12 +66,14 @@ int parse_and_validate(char *map)
         puts(mlx_strerror(mlx_errno));
         return(EXIT_FAILURE);
     }
+    // cria uma imagem com o tamanho de 128 por 128 - x e y
     if(!(image = mlx_new_image(mlx, 128, 128)))
     {
         mlx_close_window(mlx);
         puts(mlx_strerror(mlx_errno));
         return(EXIT_FAILURE);
     }
+    // desenha uma imagem apartir de x = 180 y = 180 na janela
     if(mlx_image_to_window(mlx, image, 180, 180) == -1)
     {
         mlx_close_window(mlx);
