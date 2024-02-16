@@ -17,14 +17,11 @@ LIBFT_DIR := ./libs/libft
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT_DIR)/includes
 
 LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT_DIR)/libft.a
-SRCS := $(shell find ./src -iname "*.c")
-OBJS := ${SRCS:.c=.o}
+SRCS := $(wildcard ./src/*.c)
+OBJS := $(patsubst ./src/%.c,obj/%.o,$(SRCS))
 
 # Variável de controle para verificar se o Makefile já foi executado
-FIRST_MAKE := .first_make
-
-# Verifica se é a primeira execução do Makefile
-FIRST_MAKE := .first_make
+FIRST_MAKE := obj/.first_make
 
 # Verifica se é a primeira execução do Makefile
 ifneq ($(shell test -e $(FIRST_MAKE) && echo yes),yes)
@@ -33,16 +30,13 @@ else
 FIRST_MAKE_EXECUTED := true
 endif
 
-
 all: libmlx libft $(NAME)
 ifeq ($(FIRST_MAKE_EXECUTED),false)
 	@printf "$(GREEN)All files compiled successfully\n"
 	@printf "Compiled with: $(BLUE)./$(NAME)\n"
 	@printf "Instructions: $(WHITE)Run $(YELLOW)'./$(NAME)' $(WHITE)with map path\n"
-	@printf "Thank you for using $(PURPLE)$(NAME) $(WHITE)project \n"
+	@printf "Thank you for using $(NAME)\n"
 endif
-
-# Marca a execução do Makefile
 	@touch $(FIRST_MAKE)
 
 libmlx:
@@ -51,21 +45,24 @@ libmlx:
 libft:
 	@$(MAKE) -C $(LIBFT_DIR) > /dev/null 2>&1
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
-	
+obj/%.o: src/%.c | obj
+	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
+
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBS) -o $(NAME)
+
+obj:
+	@mkdir -p obj
 
 clean:
-	@rm -rf $(OBJS)
-	@rm -rf $(LIBMLX)/build
+	@$(RM) -rf obj
+	@$(MAKE) -C $(LIBMLX)/build clean > /dev/null 2>&1
 	@$(MAKE) -C $(LIBFT_DIR) clean > /dev/null 2>&1
 
 fclean: clean
-	@rm -rf $(NAME)
+	@$(RM) -f $(NAME)
+	@$(RM) -f $(FIRST_MAKE) # Remove o arquivo de marcação
 	@$(MAKE) -C $(LIBFT_DIR) fclean > /dev/null 2>&1
-	@rm -f $(FIRST_MAKE) # Remove o arquivo de marcação
 
 re: fclean all
 
