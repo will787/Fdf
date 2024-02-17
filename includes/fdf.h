@@ -24,11 +24,11 @@
 
 
 #ifndef WIDTH
-# define WIDTH 512
+# define WIDTH 800
 #endif
 
 #ifndef HEIGHT
-#define HEIGHT 512
+#define HEIGHT 600
 #endif
 
 typedef struct pointers_views{

@@ -66,7 +66,7 @@ int parse_and_validate(char *map)
         puts(mlx_strerror(mlx_errno));
         return(EXIT_FAILURE);
     }
-    // cria uma imagem com o tamanho de 128 por 128 - x e y
+    // cria uma imagem com o tamanho de 128 por 128 - x e
     if(!(image = mlx_new_image(mlx, 128, 128)))
     {
         mlx_close_window(mlx);
