@@ -32,13 +32,16 @@
 #endif
 
 typedef struct pointers_views{
-	double	x;
-	double	y;
-	double	z;
-}	t_pointers;
+	int	x;
+	int	y;
+	int	**z_3d;
+}			fdf;
 
-int32_t main(int argc, char* argv[]);
-int parse_and_validate(char *map);
-int read_map(char *route_map);
+int32_t	main(int argc, char* argv[]);
+int		read_map(char *route_map, fdf *data);
+int drop_height(char* route_map);
+int drop_width(char *route_map);
+void clear_matrix(char *line, int *z_line);
+int ft_split_values_convert(char **line);
 //int32_t main(void);
 #endif 
