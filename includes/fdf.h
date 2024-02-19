@@ -17,10 +17,10 @@
 #include "../libs/libft/includes/get_next_line_bonus.h"
 #include "../libs/libft/includes/ft_printf.h"
 #include "../libs/MLX42/include/MLX42/MLX42.h"
-# include <stdio.h>
-# include <math.h>
+#include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <errno.h>
 
 
 #ifndef WIDTH
@@ -31,7 +31,7 @@
 #define HEIGHT 600
 #endif
 
-typedef struct pointers_views{
+typedef struct{
 	int	x;
 	int	y;
 	int	**z_3d;
@@ -41,7 +41,7 @@ int32_t	main(int argc, char* argv[]);
 int		read_map(char *route_map, fdf *data);
 int drop_height(char* route_map);
 int drop_width(char *route_map);
-void clear_matrix(char *line, int *z_line);
-int ft_split_values_convert(char **line);
-//int32_t main(void);
+void clear_matrix(char *line, int *z_line3d);
+int ft_split_values(char *line, char c);
+// int32_t main(void);
 #endif 
