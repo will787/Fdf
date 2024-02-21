@@ -1,11 +1,10 @@
 #include "../includes/fdf.h"
 
-void bresenham_fill(double x, double y, double x1, double y2, mlx_image_t *image)
+void bresenham_fill(double x, double y, double x1, double y2, void* image)
 {
     double point_initial_x;
     double point_initial_y;
     int max;
-
     point_initial_x = x1 - x;
     point_initial_y = y2 - y;
 

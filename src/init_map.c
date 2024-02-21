@@ -1,12 +1,14 @@
 #include "../includes/fdf.h"
 
 static mlx_image_t *image;
+
 int init_map(fdf *data)
 {
     data->mlx = mlx_init(WIDTH, HEIGHT, "fdf", true);
     if(!data->mlx)
         return -1;
-    image = mlx_new_image(data->mlx, 128, 128);
+    image = mlx_new_image(data->mlx, 600, 600);
+    bresenham_fill(10,10, 600, 300, image);
     if(!image)
         return -1;
     if(mlx_image_to_window(data->mlx, image, 180, 180) == -1)

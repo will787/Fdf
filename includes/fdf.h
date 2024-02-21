@@ -50,7 +50,7 @@ int drop_height(char* route_map);
 int drop_width(char *route_map);
 void alloc_matrix(char *line, int *z_line3d);
 int ft_split_values(char *line, char c);
-void bresenham_fill(double x, double y, double x1, double y2, mlx_image_t *image);
+void bresenham_fill(double x, double y, double x1, double y2, void* image);
 int    init_map(fdf *data);
 // int32_t main(void);
 #endif 
