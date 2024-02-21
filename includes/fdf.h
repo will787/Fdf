@@ -31,17 +31,26 @@
 #define HEIGHT 600
 #endif
 
-typedef struct{
+#define MAX1(a, b) ((a > b) ? a : b)
+#define MOD(a) ((a < 0) ? -a : a)
+
+
+typedef struct
+{
 	int	x;
 	int	y;
 	int	**z_3d;
-}			fdf;
+
+	mlx_t *mlx;
+}	fdf;
 
 int32_t	main(int argc, char* argv[]);
 int		read_map(char *route_map, fdf *data);
 int drop_height(char* route_map);
 int drop_width(char *route_map);
-void clear_matrix(char *line, int *z_line3d);
+void alloc_matrix(char *line, int *z_line3d);
 int ft_split_values(char *line, char c);
+void bresenham_fill(double x, double y, double x1, double y2, mlx_image_t *image);
+int    init_map(fdf *data);
 // int32_t main(void);
 #endif 

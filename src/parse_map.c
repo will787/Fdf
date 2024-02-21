@@ -49,7 +49,6 @@ int read_map(char *route_map, fdf *data)
         perror("Memory allocation failled");
         return -1;
     }
-
     i = 0;
     while(i <= data->y)
         data->z_3d[i++] = (int *)malloc(sizeof(int) * (data->x + 1));
@@ -58,7 +57,7 @@ int read_map(char *route_map, fdf *data)
     i = 0;
     while((line = get_next_line(fd)) != NULL)
     {
-        clear_matrix(line, data->z_3d[i]);
+        alloc_matrix(line, data->z_3d[i]);
         free(line);
         i++;
     }
@@ -67,7 +66,7 @@ int read_map(char *route_map, fdf *data)
     return (1);
 }
 
-void clear_matrix(char *line, int *z_line3d)
+void alloc_matrix(char *line, int *z_line3d)
 {
     int i;
     char **num_line;
@@ -88,13 +87,14 @@ int ft_split_values(char *line, char c)
 {
     int i;
     char **counters_wd;
-
-    counters_wd = ft_split(line, c);
     
+    counters_wd = ft_split(line, c);
     i = 0;
     while(counters_wd[i])
     {
+        free(counters_wd[i]);
         i++;
     }
+    free(counters_wd);
     return(i);
 }
