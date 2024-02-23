@@ -6,7 +6,7 @@
 /*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:10:06 by wivieira          #+#    #+#             */
-/*   Updated: 2024/02/23 17:21:46 by wivieira         ###   ########.fr       */
+/*   Updated: 2024/02/23 18:10:52 by wivieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int drop_height(char* route_map);
 int drop_width(char *route_map);
 void alloc_matrix(char *line, int *z_line3d);
 int ft_split_values(char *line, char c);
-void bresenham_fill(double x, double y, double x1, double y2, void* image);
+void bresenham_fill(double x, double y, double x1, double y2, fdf *data);
+void texture_line(fdf *data);
 int    init_map(fdf *data);
 // int32_t main(void);
 #endif 

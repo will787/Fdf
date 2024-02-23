@@ -6,7 +6,7 @@ int init_map(fdf *data)
     if(!data->mlx)
         return -1;
     data->image = mlx_new_image(data->mlx, 600, 600);
-    bresenham_fill(0,0, 599, 599, data->image);
+	texture_line(data);
     if(!data->image)
         return -1;
     if(mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
