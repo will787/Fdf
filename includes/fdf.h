@@ -6,7 +6,7 @@
 /*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:10:06 by wivieira          #+#    #+#             */
-/*   Updated: 2024/02/08 14:13:36 by wivieira         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:21:46 by wivieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 
 #ifndef WIDTH
-# define WIDTH 800
+# define WIDTH 600
 #endif
 
 #ifndef HEIGHT
@@ -42,6 +42,7 @@ typedef struct
 	int	**z_3d;
 
 	mlx_t *mlx;
+	mlx_image_t *image;
 }	fdf;
 
 int32_t	main(int argc, char* argv[]);

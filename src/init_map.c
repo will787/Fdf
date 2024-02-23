@@ -1,17 +1,15 @@
 #include "../includes/fdf.h"
 
-static mlx_image_t *image;
-
 int init_map(fdf *data)
 {
     data->mlx = mlx_init(WIDTH, HEIGHT, "fdf", true);
     if(!data->mlx)
         return -1;
-    image = mlx_new_image(data->mlx, 600, 600);
-    bresenham_fill(10,10, 600, 300, image);
-    if(!image)
+    data->image = mlx_new_image(data->mlx, 600, 600);
+    bresenham_fill(0,0, 599, 599, data->image);
+    if(!data->image)
         return -1;
-    if(mlx_image_to_window(data->mlx, image, 180, 180) == -1)
+    if(mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
     {
         mlx_close_window(data->mlx);
         puts(mlx_strerror(mlx_errno));
@@ -19,7 +17,7 @@ int init_map(fdf *data)
     }
     mlx_loop(data->mlx);
     mlx_terminate(data->mlx);
-    return 1;
+	return 1;
 }
 
 // void ft_hook(void* param, fdf* data)
