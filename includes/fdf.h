@@ -34,6 +34,12 @@
 #define MAX1(a, b) ((a > b) ? a : b)
 #define MOD(a) ((a < 0) ? -a : a)
 
+# define WHITE 0xFFFFFFFF
+# define BLUE 0x0000FFFF
+# define RED 0xFF0000FF
+# define GREEN 0x00FF00FF
+# define PINK 0xFFFF00FF
+# define YELLOW 0xFF00FFFF
 
 typedef struct
 {

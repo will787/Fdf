@@ -9,21 +9,20 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
     //int z1;
     
     z = data->z_3d[(int)y][(int)x];
-    //z1 = data->z[(int)y2][(int)y1];
+    //z1 = data->z_3d[(int)y2][(int)x1];
     
+
+    // idea : create new instruct management a axis em bresenham fills, for each points conected
+    // todo [pendency]
     //--zooom--//
     x *= data->zoom;
     y *= data->zoom;
     x1 *= data->zoom;
     y2 *= data->zoom;
 
-    // idea : create new instruct management a axis em bresenham fills, for each points conected
-    // todo [pendency]
-
-
     // color points;
-    data->color = (z) ? 0x800080 : 0xffffff;
-
+    data->color = (z) ? GREEN : WHITE; // definindo as variaveis lá dentro do headerfile 
+    //data->color = (z1) ? 0xffffff : 0x800080;
     point_initial_x = x1 - x;
     point_initial_y = y2 - y;
     max = MAX1(MOD(point_initial_x), MOD(point_initial_y));
@@ -32,8 +31,8 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
 
     while((int)(x - x1) || (int)(y - y2))
     {
-        printf("Valor das casas [%f]", x);
-        printf("Valor das casas [%f]", y);
+        //printf("Valor das casas [%f]", x);
+        //printf("Valor das casas [%f]", y);
         printf("\n\n---------------------\n\n");
         mlx_put_pixel(data->image, x, y, data->color);
         x += point_initial_x;
