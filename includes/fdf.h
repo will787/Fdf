@@ -40,12 +40,14 @@ typedef struct
 	int	x;
 	int	y;
 	int	**z_3d;
+	int zoom;
+	int color;
 
 	mlx_t *mlx;
 	mlx_image_t *image;
 }	fdf;
 
-int32_t	main(int argc, char* argv[]);
+int32_t	main(int argc, char *argv[]);
 int		read_map(char *route_map, fdf *data);
 int drop_height(char* route_map);
 int drop_width(char *route_map);

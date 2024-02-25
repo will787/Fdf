@@ -6,7 +6,8 @@ int init_map(fdf *data)
     if(!data->mlx)
         return -1;
     data->image = mlx_new_image(data->mlx, 600, 600);
-	texture_line(data);
+    data->zoom = 20;
+    texture_line(data);
     if(!data->image)
         return -1;
     if(mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)

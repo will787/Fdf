@@ -5,16 +5,37 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
     double point_initial_x;
     double point_initial_y;
     int max;
+    int z;
+    //int z1;
+    
+    z = data->z_3d[(int)y][(int)x];
+    //z1 = data->z[(int)y2][(int)y1];
+    
+    //--zooom--//
+    x *= data->zoom;
+    y *= data->zoom;
+    x1 *= data->zoom;
+    y2 *= data->zoom;
+
+    // idea : create new instruct management a axis em bresenham fills, for each points conected
+    // todo [pendency]
+
+
+    // color points;
+    data->color = (z) ? 0x800080 : 0xffffff;
+
     point_initial_x = x1 - x;
     point_initial_y = y2 - y;
-
     max = MAX1(MOD(point_initial_x), MOD(point_initial_y));
     point_initial_x /= max;
     point_initial_y /= max;
 
     while((int)(x - x1) || (int)(y - y2))
     {
-        mlx_put_pixel(data->image, x, y, 0xffffff);
+        printf("Valor das casas [%f]", x);
+        printf("Valor das casas [%f]", y);
+        printf("\n\n---------------------\n\n");
+        mlx_put_pixel(data->image, x, y, data->color);
         x += point_initial_x;
         y += point_initial_y;
 
@@ -23,20 +44,22 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
 
 void texture_line(fdf *data)
 {
-	int i;
-	int j;
+	int axis_y;
+	int axis_x;
 
-	i = 0;
-	while(i < data->y)
+	axis_y = 0;
+	while(axis_y < data->y)
     {    
-        j = 0;
-        while(j < data->x)
+        axis_x = 0;
+        while(axis_x < data->x)
         {
-            printf("%3d", data->z_3d[i][j]);
-            bresenham_fill(i, j, data->x - 1, data->y -1, data);
-			j++;
+            printf("%3d", data->z_3d[axis_y][axis_x]);
+            //bresenham_fill(axis_y, axis_x, data->x - 1, data->y -1, data);
+			bresenham_fill(axis_x, axis_y, axis_x + 1, axis_y, data); // desenhamos no eixo x
+            bresenham_fill(axis_x, axis_y, axis_x, axis_y + 1, data); // depois desenhamos no eixo y
+            axis_x++;
         }
         printf("\n");
-        i++;
+        axis_y++;
     }
 }
