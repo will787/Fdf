@@ -14,8 +14,6 @@
 # define FDF_H
 
 #include "../libs/libft/includes/libft.h"
-#include "../libs/libft/includes/get_next_line_bonus.h"
-#include "../libs/libft/includes/ft_printf.h"
 #include "../libs/MLX42/include/MLX42/MLX42.h"
 #include <stdio.h>
 #include <math.h>
@@ -62,5 +60,6 @@ int ft_split_values(char *line, char c);
 void bresenham_fill(double x, double y, double x1, double y2, fdf *data);
 void texture_line(fdf *data);
 int    init_map(fdf *data);
+void isometric_image(double *x, double *y, int z);
 // int32_t main(void);
 #endif 
