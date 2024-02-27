@@ -1,28 +1,17 @@
 #include "../includes/fdf.h"
-#include <math.h>
 
 void isometric_image(double *x, double *y, int z)
 {
-    static int i = -1;
-    i += 1;
-    if(!z){
-        printf("cagou em algum momento {%i}\n", i);
-        return ;
-    }
     *x = (*x - *y) * cos(0.8);
     *y = (*x + *y) * sin(0.8) - z;
 }
 
 void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
 {
-    double point_initial_x;
-    double point_initial_y;
-    int max;
-    int z;
-    int z1;
-    
-    z = data->z_3d[(int)y][(int)x];
-    z1 = data->z_3d[(int)y2][(int)x1];
+    bres_args args;
+
+    args.z = data->z_3d[(int)y][(int)x];
+    args.z1 = data->z_3d[(int)y2][(int)x1];
 
     // idea : create new instruct management a axis em bresenham fills, for each points conected
     // todo [pendency]
@@ -33,26 +22,23 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
     y2 *= data->zoom;
 
     // color points;
-    data->color = (z || z1) ? GREEN : WHITE; // definindo as variaveis lá dentro do headerfile 
-    point_initial_x = x1 - x;
-    point_initial_y = y2 - y;
+    data->color = (args.z || args.z1) ? RED : WHITE; // definindo as variaveis lá dentro do headerfile 
+    args.point_initial_x = x1 - x;
+    args.point_initial_y = y2 - y;
     
     // 3d image
-    isometric_image(&x, &y, z);
-    isometric_image(&x1, &y2, z1);
-    // ------------------------- = -----------------------
-    max = MAX1(MOD(point_initial_x), MOD(point_initial_y));
-    point_initial_x /= max;
-    point_initial_y /= max;
+    // isometric_image(&x, &y, z);
+    // isometric_image(&x1, &y2, z1);
+    // // //------------------------- = -----------------------
+    args.max = MAX1(MOD(args.point_initial_x), MOD(args.point_initial_y));
+    args.point_initial_x /= args.max;
+    args.point_initial_y /= args.max;
 
     while((int)(x - x1) || (int)(y - y2))
     {
-        // printf("Valor das casas [%f]", x);
-        // printf("Valor das casas [%f]", y);
-        // printf("\n\n---------------------\n\n");
         mlx_put_pixel(data->image, x, y, data->color);
-        x += point_initial_x;
-        y += point_initial_y;
+        x += args.point_initial_x;
+        y += args.point_initial_y;
 
     }
 }
@@ -74,7 +60,6 @@ void texture_line(fdf *data)
             bresenham_fill(axis_x, axis_y, axis_x, axis_y + 1, data); // depois desenhamos no eixo y
             axis_x++;
         }
-        // printf("\n");
         axis_y++;
     }
 }

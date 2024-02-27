@@ -51,6 +51,16 @@ typedef struct
 	mlx_image_t *image;
 }	fdf;
 
+
+typedef struct
+{
+	double point_initial_x;
+    double point_initial_y;
+    int max;
+    int z;
+    int z1;
+} bres_args;
+
 int32_t	main(int argc, char *argv[]);
 int		read_map(char *route_map, fdf *data);
 int drop_height(char* route_map);
@@ -61,5 +71,8 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data);
 void texture_line(fdf *data);
 int    init_map(fdf *data);
 void isometric_image(double *x, double *y, int z);
+void key_move(void* param);
+void ft_randomize(void* param);
+
 // int32_t main(void);
 #endif 
