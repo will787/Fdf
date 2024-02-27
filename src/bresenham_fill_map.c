@@ -12,7 +12,6 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
 
     args.z = data->z_3d[(int)y][(int)x];
     args.z1 = data->z_3d[(int)y2][(int)x1];
-
     // idea : create new instruct management a axis em bresenham fills, for each points conected
     // todo [pendency]
     //--zooom--//

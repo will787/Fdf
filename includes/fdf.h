@@ -44,13 +44,11 @@ typedef struct
 	int	x;
 	int	y;
 	int	**z_3d;
-	int zoom;
 	int color;
-
+	int zoom;
 	mlx_t *mlx;
 	mlx_image_t *image;
 }	fdf;
-
 
 typedef struct
 {
@@ -73,6 +71,6 @@ int    init_map(fdf *data);
 void isometric_image(double *x, double *y, int z);
 void key_move(void* param);
 void ft_randomize(void* param);
-
+void init_args(fdf* data);
 // int32_t main(void);
 #endif 
