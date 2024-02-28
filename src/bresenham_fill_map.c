@@ -48,15 +48,17 @@ void texture_line(fdf *data)
 	int axis_x;
 
 	axis_y = 0;
-	while(axis_y < data->y - 1)
+	while(axis_y < data->y)
     {    
         axis_x = 0;
-        while(axis_x < data->x - 1)
+        while(axis_x < data->x)
         {
             //printf("%3d", data->z_3d[axis_y][axis_x]);
             //bresenham_fill(axis_y, axis_x, data->x - 1, data->y -1, data);
-            bresenham_fill(axis_x, axis_y, axis_x + 1, axis_y, data); // desenhamos no eixo x
-            bresenham_fill(axis_x, axis_y, axis_x, axis_y + 1, data); // depois desenhamos no eixo y
+            if(axis_x < data->x - 1)
+                bresenham_fill(axis_x, axis_y, axis_x + 1, axis_y, data); // desenhamos no eixo x
+            if(axis_y < data->y - 1)
+                bresenham_fill(axis_x, axis_y, axis_x, axis_y + 1, data); // depois desenhamos no eixo y
             axis_x++;
         }
         axis_y++;
