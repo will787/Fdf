@@ -2,8 +2,8 @@
 
 void isometric_image(double *x, double *y, int z)
 {
-    *x = (*x - *y) * cos(0.8);
-    *y = (*x + *y) * sin(0.8) - z;
+    *x = (*x - *y) * cos(1.2);
+    *y = (*x + *y) * sin(1.2) - z;
 }
 
 void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
@@ -26,8 +26,9 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
     args.point_initial_y = y2 - y;
     
     // 3d image
-    // isometric_image(&x, &y, z);
-    // isometric_image(&x1, &y2, z1);
+    isometric_image(&x, &y, args.z);
+    isometric_image(&x1, &y2, args.z1);
+
     // // //------------------------- = -----------------------
     args.max = MAX1(MOD(args.point_initial_x), MOD(args.point_initial_y));
     args.point_initial_x /= args.max;
@@ -38,8 +39,8 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
         mlx_put_pixel(data->image, x, y, data->color);
         x += args.point_initial_x;
         y += args.point_initial_y;
-
     }
+	ft_printf("ate aqui funciona");
 }
 
 void texture_line(fdf *data)
@@ -63,4 +64,5 @@ void texture_line(fdf *data)
         }
         axis_y++;
     }
+
 }

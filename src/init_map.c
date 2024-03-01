@@ -9,15 +9,14 @@ int init_map(fdf *data)
     data->zoom = 20;
     if(!data->image)
         return -1;
-    texture_line(data);
     if(mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
     {
         mlx_close_window(data->mlx);
         puts(mlx_strerror(mlx_errno));
         return -1;
     }
-    mlx_loop_hook(data->mlx, ft_randomize, data->mlx);
-    mlx_loop_hook(data->mlx, key_move, data->mlx);
+    // mlx_loop_hook(data->mlx, ft_randomize, data);
+    mlx_loop_hook(data->mlx, key_move, data);
     mlx_loop(data->mlx);
     mlx_terminate(data->mlx);
 	return 1;
@@ -25,6 +24,7 @@ int init_map(fdf *data)
 
 void ft_randomize(void* param)
 {
-    (void)param;
-    printf("%p\n", param);
+	fdf *data;
+
+	data = (fdf *)param;
 }
