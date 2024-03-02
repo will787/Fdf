@@ -9,7 +9,7 @@ int init_map(fdf *data)
     data->zoom = 20;
     if(!data->image)
         return -1;
-    if(mlx_image_to_window(data->mlx, data->image, 0, 0) == -1)
+    if(mlx_image_to_window(data->mlx, data->image, 150, 200) == -1)
     {
         mlx_close_window(data->mlx);
         puts(mlx_strerror(mlx_errno));
@@ -22,9 +22,9 @@ int init_map(fdf *data)
 	return 1;
 }
 
-void ft_randomize(void* param)
-{
-	fdf *data;
+// void ft_randomize(void* param)
+// {
+// 	fdf *data;
 
-	data = (fdf *)param;
-}
+// 	data = (fdf *)param;
+// }

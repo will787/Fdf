@@ -52,8 +52,8 @@ typedef struct
 
 typedef struct
 {
-	double point_initial_x;
-    double point_initial_y;
+	double point_x;
+    double point_y;
     int max;
     int z;
     int z1;
@@ -72,5 +72,6 @@ void isometric_image(double *x, double *y, int z);
 void key_move(void* param);
 void ft_randomize(void* param);
 void init_args(fdf* data);
+int fill_all_points(double point_x, double point_y, double point_f_x, double point_f_y);
 // int32_t main(void);
 #endif 
