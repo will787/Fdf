@@ -13,11 +13,15 @@ void isometric_image(double *x, double *y, int z)
 
 void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
 {
-    static bres_args args;
+    bres_args args;
 
     args.z = data->z_3d[(int)y][(int)x];
     args.z1 = data->z_3d[(int)y2][(int)x1];
-    // idea : create new instruct management a axis em bresenham fills, for each points conected
+
+
+	if((int)x >= WIDTH || (int)y >= HEIGHT ||  (int)x1 >= WIDTH || (int)y2 >= HEIGHT)
+		return ;
+	// idea : create new instruct management a axis em bresenham fills, for each points conected
     // todo [pendency]
     //--zooom--//
     x *= data->zoom;
@@ -47,7 +51,7 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
         y++;
         mlx_put_pixel(data->image, x, y, data->color);
     }
-    ft_printf("ate aqui funciona");
+    ft_printf("ate aqui funciona\n");
 }
 
 void texture_line(fdf *data)
@@ -74,13 +78,13 @@ void texture_line(fdf *data)
 
 }
 
-int fill_all_points(double point_x, double point_y, double point_f_x, double point_f_y)
-{
-    if(((int)point_x - (int)point_f_x == 0) && ((int)point_y - (int)point_f_y == 0))
-    {
-        return 0;
-        ft_printf("saiu");
-    }
-    ft_printf("entro");
-    return 1;
-}
+// int fill_all_points(double point_x, double point_y, double point_f_x, double point_f_y)
+// {
+//     if(((int)point_x - (int)point_f_x == 0) && ((int)point_y - (int)point_f_y == 0))
+//     {
+//         return 0;
+//         ft_printf("saiu");
+//     }
+//     ft_printf("entro");
+//     return 1;
+// }
