@@ -35,23 +35,24 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
     args.point_y = y2 - y;
     
     // 3d image
-    isometric_image(&x, &y, args.z);
-    isometric_image(&x1, &y2, args.z1);
-
+	// isometric_image(&x, &y, args.z);
+	// isometric_image(&x1, &y2, args.z1);
+		
     // // //------------------------- = -----------------------
-    args.max = MAX1(MOD(args.point_x), MOD(args.point_x));
+    args.max = MAX1(FABS_MOD(args.point_x), FABS_MOD(args.point_y));
     args.point_x /= args.max;
     args.point_y /= args.max;
-    printf("value de x{%f}\n", args. point_x);
-    printf("value de y{%f}\n", args. point_y);
-    // program = fill_all_points(x, y, x1, y2);
-    if((x - args.point_x) || (y - args.point_y))
+    printf("value de x{%f}\n", args.point_x);
+    printf("value de y{%f}\n", args.point_y);
+    while(true)
     {   
-        x++;
-        y++;
-        mlx_put_pixel(data->image, x, y, data->color);
-    }
-    ft_printf("ate aqui funciona\n");
+		x += args.point_x;
+		y += args.point_y;
+		mlx_put_pixel(data->image, x, y, data->color);
+		if(x == x1 && y == y2)
+			break;	
+	}
+	printf("chegou ao  fim\n");
 }
 
 void texture_line(fdf *data)
