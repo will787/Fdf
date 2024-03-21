@@ -24,10 +24,7 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
 	// idea : create new instruct management a axis em bresenham fills, for each points conected
     // todo [pendency]
     //--zooom--//
-    x *= data->zoom;
-    y *= data->zoom;
-    x1 *= data->zoom;
-    y2 *= data->zoom;
+    justify_image(x, y, x1, y2);
 
     // color points;
     data->color = (args.z || args.z1) ? RED : WHITE; // definindo as variaveis lá dentro do headerfile 
@@ -35,8 +32,8 @@ void bresenham_fill(double x, double y, double x1, double y2, fdf *data)
     args.point_y = y2 - y;
     
     // 3d image
-	// isometric_image(&x, &y, args.z);
-	// isometric_image(&x1, &y2, args.z1);
+	isometric_image(&x, &y, args.z);
+	isometric_image(&x1, &y2, args.z1);
 		
     // // //------------------------- = -----------------------
     args.max = MAX1(FABS_MOD(args.point_x), FABS_MOD(args.point_y));
@@ -76,7 +73,6 @@ void texture_line(fdf *data)
         }
         axis_y++;
     }
-
 }
 
 // int fill_all_points(double point_x, double point_y, double point_f_x, double point_f_y)
