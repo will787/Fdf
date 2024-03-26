@@ -36,13 +36,13 @@ int read_map(char *route_map, fdf *data)
     int i;
     int fd;
     char *line;
-
-    if(!ft_strnstr(route_map, ".fdf", ft_strlen(route_map))){
+    data->map = route_map;
+    if(!ft_strnstr(data->map, ".fdf", ft_strlen(data->map))){
         fprintf(stderr, "invalid format file \n");
         return(-1);
     }
-    data->x = drop_width(route_map);
-    data->y = drop_height(route_map);
+    data->x = drop_width(data->map);
+    data->y = drop_height(data->map);
 
     data->z_3d = (int **)malloc(sizeof(int *) * (data->y + 1));
     if(!data->z_3d){
@@ -53,7 +53,7 @@ int read_map(char *route_map, fdf *data)
     while(i <= data->y)
         data->z_3d[i++] = (int *)malloc(sizeof(int) * (data->x + 1));
 
-    fd = open(route_map, O_RDONLY);
+    fd = open(data->map, O_RDONLY);
     i = 0;
     while((line = get_next_line(fd)) != NULL)
     {

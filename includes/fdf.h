@@ -41,23 +41,38 @@
 
 typedef struct
 {
-	int	x;
-	int	y;
-	int	**z_3d;
-	int color;
-	int zoom;
-	mlx_t *mlx;
+	int			x;
+	int			y;
+	int			**z_3d;
+	int 		color;
+	int			zoom;
+	char		*map;
+	mlx_t		*mlx;
 	mlx_image_t *image;
 }	fdf;
 
+typedef struct 
+{
+	int	width;
+	int	height;
+}	t_map;
+
 typedef struct
 {
-	double point_x;
-    double point_y;
+	double pt_x;
+    double pt_y;
     int max;
     int z;
     int z1;
 } bres_args;
+
+typedef struct
+{
+	int x;
+	int y;
+	int z;
+	int color;
+}	t_point;
 
 int32_t	main(int argc, char *argv[]);
 int		read_map(char *route_map, fdf *data);
@@ -65,7 +80,7 @@ int drop_height(char* route_map);
 int drop_width(char *route_map);
 void alloc_matrix(char *line, int *z_line3d);
 int ft_split_values(char *line, char c);
-void bresenham_fill(double x, double y, double x1, double y2, fdf *data);
+void draw_line(double x, double y, double x1, double y2, fdf *data);
 void fill_pixels(double x0, double y0, double x1, double y1, fdf *data);
 void texture_line(fdf *data);
 int    init_map(fdf *data);
@@ -73,6 +88,10 @@ void isometric_image(double *x, double *y, int z);
 void key_move(void* param);
 void ft_randomize(void* param);
 void init_args(fdf* data);
+
+
+// static void rotate_x(int *x, int *y, int *z, double alpha);
+// static void rotate_z(int *x, int *y, int *z, double gamma);
 //int fill_all_points(double point_x, double point_y, double point_f_x, double point_f_y);
 // int32_t main(void);
 #endif 

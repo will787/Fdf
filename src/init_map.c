@@ -21,10 +21,3 @@ int init_map(fdf *data)
     mlx_terminate(data->mlx);
 	return 1;
 }
-
-// void ft_randomize(void* param)
-// {
-// 	fdf *data;
-
-// 	data = (fdf *)param;
-// }
