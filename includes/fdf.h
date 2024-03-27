@@ -41,8 +41,8 @@
 
 typedef struct
 {
-	int			x;
-	int			y;
+	int			width;
+	int			height;
 	int			**z_3d;
 	int 		color;
 	int			zoom;
@@ -50,12 +50,6 @@ typedef struct
 	mlx_t		*mlx;
 	mlx_image_t *image;
 }	fdf;
-
-typedef struct 
-{
-	int	width;
-	int	height;
-}	t_map;
 
 typedef struct
 {

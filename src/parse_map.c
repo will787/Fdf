@@ -41,17 +41,17 @@ int read_map(char *route_map, fdf *data)
         fprintf(stderr, "invalid format file \n");
         return(-1);
     }
-    data->x = drop_width(data->map);
-    data->y = drop_height(data->map);
+    data->width = drop_width(data->map);
+    data->height = drop_height(data->map);
 
-    data->z_3d = (int **)malloc(sizeof(int *) * (data->y + 1));
+    data->z_3d = (int **)malloc(sizeof(int *) * (data->height + 1));
     if(!data->z_3d){
         perror("Memory allocation failled");
         return -1;
     }
     i = 0;
-    while(i <= data->y)
-        data->z_3d[i++] = (int *)malloc(sizeof(int) * (data->x + 1));
+    while(i <= data->height)
+        data->z_3d[i++] = (int *)malloc(sizeof(int) * (data->width + 1));
 
     fd = open(data->map, O_RDONLY);
     i = 0;
